@@ -24,9 +24,9 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   userEmail: userEmailReducer,
-  [api.reducerPath]: api.reducer,
   auth: authReducer,
   transfer: transferReducer,
+  [api.reducerPath]: api.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -39,7 +39,6 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }).concat(api.middleware),
-    
 });
 
 export const persistor = persistStore(store);
